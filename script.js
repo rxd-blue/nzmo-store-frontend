@@ -1,6 +1,8 @@
 let lastFilter = {};
 let currentCart = [];
 
+const API_BASE_URL = 'https://large-zigzag-gerbil.glitch.me';
+
 function filterProducts(category, brand) {
   const products = document.querySelectorAll('.product');
   products.forEach(p => {
@@ -17,7 +19,7 @@ function filterProducts(category, brand) {
 // استدعاء الفلتر من API كل 2 ثانية
 async function checkFilterUpdate() {
   try {
-    const res = await fetch('http://localhost:3000/api/filter');
+    const res = await fetch(`${API_BASE_URL}/api/filter`);
     const filter = await res.json();
 
     if (JSON.stringify(filter) !== JSON.stringify(lastFilter)) {
@@ -32,7 +34,7 @@ async function checkFilterUpdate() {
 // استدعاء محتويات العربة
 async function pollCart() {
   try {
-    const res = await fetch('http://localhost:3000/api/cart');
+    const res = await fetch(`${API_BASE_URL}/api/cart`);
     const newCart = await res.json();
 
     if (JSON.stringify(newCart) !== JSON.stringify(currentCart)) {
@@ -62,7 +64,7 @@ function showSlideInCart(items) {
 
 // عند إتمام الشراء
 function completeCheckout() {
-  fetch('http://localhost:3000/api/cart/reset', { method: 'POST' });
+  fetch(`${API_BASE_URL}/api/cart/reset`, { method: 'POST' });
   document.getElementById('cart-slide').classList.remove('visible');
   alert('✅ تم الشراء!');
 }
