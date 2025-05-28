@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منتجاتنا</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      text-align: right;
+      margin: 20px;
+    }
+
+    .product {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 5px;
+      display: inline-block;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    #cart-slide {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 350px;
+      height: 100%;
+      background: #fff;
+      border-left: 2px solid #ccc;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: right 0.4s ease-in-out;
+      z-index: 9999;
+    }
+
+    #cart-slide.visible {
+      right: 0;
+    }
+
+    #cart-slide h2 {
+      margin-top: 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .product:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transform: translateY(-2px);
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <h1>📦 المنتجات</h1>
+
+  <div id="product-list">
+    <div class="product"
+         data-name="Samsung A23"
+         data-category="تليفونات"
+         data-brand="سامسونج"
+         data-details="128GB، شاشة 6.6 انش">
+      Samsung A23
+    </div>
+
+    <div class="product"
+         data-name="LG WashPro"
+         data-category="غسالات"
+         data-brand="LG"
+         data-details="غسالة 9 كجم، أبيض">
+      LG WashPro
+    </div>
+
+    <div class="product"
+         data-name="Xiaomi Note 12"
+         data-category="تليفونات"
+         data-brand="شاومي"
+         data-details="6GB RAM، شاشة 6.4 انش">
+      Xiaomi Note 12
+    </div>
+  </div>
+
+  <!-- 🛒 عربة الشراء الجانبية -->
+  <div id="cart-slide" class="hidden">
+    <h2>🛒 العربة</h2>
+    <div id="cart-content"></div>
+    <button onclick="completeCheckout()">إتمام الشراء</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html> 
